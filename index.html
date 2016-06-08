@@ -3,55 +3,8 @@
     <head>
         <title>Привет WebGL!</title>
         <meta charset="utf-8" />
-        <link href="style.css" rel="stylesheet" type="text/css"/>
         <script src="two.js" type="text/javascript"></script>
-        <script>
-            var two;
-            var startTime = Date.now();
-            function createRndGraph() {
-                var points = [];
-                var max = 50;
-                var coeff = window.innerWidth / max;
-                var i = 0;
-                while (i < window.innerWidth) {
-                    points.push({
-                        x: i,
-                        y: getRandomArbitary(0, window.innerHeight)
-                    });
-                    i += coeff;
-                }
-                return points;
-            }
-
-            function getRandomArbitary(min, max) {
-                return Math.random() * (max - min) + min;
-            }
-
-            function sinDegrees(angle) {
-                return Math.cos(angle / 180 * Math.PI);
-            }
-
-            function render() {
-                two.clear();
-                requestAnimationFrame(render);
-                var points = createRndGraph();
-                points.map(function (point, i) {
-                    if (i === 0) {
-                        two.makeLine(0, 0, point.x, point.y);
-                    } else {
-                        two.makeLine(points[i - 1].x, points[i - 1].y, point.x, point.y);
-                    }
-                });
-                two.update();
-            }
-
-            window.onload = function () {
-                var elem = document.getElementById('draw-shapes');
-                var params = {fullscreen: true, type: Two.Types.canvas};
-                two = new Two(params).appendTo(elem);
-                render();
-            };
-        </script>
+        <script src="script.js" type="text/javascript"></script>
     </head>
     <body >
         <div id="draw-shapes"></div>
